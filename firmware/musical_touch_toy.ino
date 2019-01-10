@@ -31,6 +31,8 @@ void setup() {
 
        Serial.begin(115200);
        Serial.println(ADCTouch.read(A0, 500),DEC);
+
+    dfplayer.volume(30);   // Can be set from 0 to 30
 }
 
 
