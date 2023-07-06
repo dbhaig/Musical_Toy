@@ -2,15 +2,16 @@
  *
  *    Firmware for musical touch toy
  *
- *    Copyright 2019 Don Haig (time4tux at gmail dot com)
+ *    Copyright 2023 Don Haig (time4tux at gmail dot com)
  *
  *    GNU GPLv3 (See LICENSE for details) 
  *
  */
-#include "dfplayer.h"
-#include <ADCTouch.h>
+#include "ADCTouch.h"
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
 
-DfPlayer dfplayer;
+DFRobotDFPlayerMini dfplayer;
 
 SoftwareSerial player_uart(3, 4); // rx, tx
 
@@ -29,8 +30,8 @@ void setup() {
     if (!dfplayer.begin(player_uart, false)) 
        Serial.println("Ignoring dfplayer.begin() error");
 
-       Serial.begin(115200);
-       Serial.println(ADCTouch.read(A0, 500),DEC);
+    Serial.begin(115200);
+    Serial.println(ADCTouch.read(A0, 500),DEC);
 
     dfplayer.volume(30);   // Can be set from 0 to 30
 }
